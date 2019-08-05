@@ -53,6 +53,7 @@ public class AppManager : MonoBehaviour
       console.RemoveAt(0);
     }
     console.Add(DateTime.Now.ToString("hh:mm:ss") + ": " + message);
+    print(message);
   }
 
   private void OnGUI()

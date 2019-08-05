@@ -7,10 +7,15 @@ using UnityEngine;
 public class RecordUIController : MonoBehaviour
 {
   AppManager app;
+  bool hasCam;
 
   void Start()
   {
     app = AppManager.Instance;
+
+    // Check if device has camera
+    hasCam = NativeCamera.DeviceHasCamera();
+    app.log("DeviceHasCamera is " + hasCam);
   }
 
   void Update()
@@ -28,18 +33,18 @@ public class RecordUIController : MonoBehaviour
       return;
     }
 
-    // Check if device has camera
-    if (NativeCamera.DeviceHasCamera())
-    {
-      app.log("DeviceHasCamera false");
-      return;
-    }
+
+
+    if (!hasCam) return;
 
     NativeCamera.RecordVideo(recordCallback, NativeCamera.Quality.Default, 0, 0);
   }
 
   void recordCallback(string filepath)
   {
-    app.log(filepath);
+    if (filepath != null)
+      app.log("filepath is " + filepath);
+    else
+      app.log("filepath was null");
   }
 }
