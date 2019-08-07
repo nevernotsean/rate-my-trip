@@ -127,7 +127,7 @@ public class RecordUIController : MonoBehaviour
 
   IEnumerator AskQuestions()
   {
-    while (currentQuestion < questions.Length)
+    while (currentQuestion <= questions.Length)
     {
       questionText.text = questions[currentQuestion];
 
