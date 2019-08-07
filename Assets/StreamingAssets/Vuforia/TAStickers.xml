@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="TAReviewd" size="100.000000 105.803574" />
+    <ImageTarget name="TAReviewUS" size="100.000000 105.803574" />
+    <ImageTarget name="TAEecomended" size="100.000000 105.803574" />
+  </Tracking>
+</QCARConfig>

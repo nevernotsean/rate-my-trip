@@ -37,6 +37,8 @@ public class NativeShare
 #elif !UNITY_EDITOR && UNITY_IOS
 	[System.Runtime.InteropServices.DllImport( "__Internal" )]
 	private static extern void _NativeShare_Share( string[] files, int filesCount, string subject, string text );
+	[System.Runtime.InteropServices.DllImport( "__Internal" )]
+	private static extern void _shareBackgroundVideo( string[] files );
 #endif
 
 	private string subject;
@@ -126,6 +128,25 @@ public class NativeShare
 		AJC.CallStatic( "Share", Context, targetPackage, targetClass, files.ToArray(), mimes.ToArray(), subject, text, title );
 #elif UNITY_IOS
 		_NativeShare_Share( files.ToArray(), files.Count, subject, text );
+		//_shareBackgroundVideo( files.ToArray(), text );
+#else
+		Debug.Log( "No sharing set up for this platform." );
+#endif
+	}
+
+	public void ShareStory()
+	{
+		if( files.Count == 0 && subject.Length == 0 && text.Length == 0 )
+		{
+			Debug.LogWarning( "Share Error: attempting to share nothing!" );
+			return;
+		}
+
+#if UNITY_EDITOR
+		Debug.Log( "Shared!" );
+#elif UNITY_IOS
+		//_NativeShare_Share( files.ToArray(), files.Count, subject, text );
+		_shareBackgroundVideo( files.ToArray() );
 #else
 		Debug.Log( "No sharing set up for this platform." );
 #endif

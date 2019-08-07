@@ -7,6 +7,8 @@ public class AppManager : MonoBehaviour
 {
   private static AppManager instance = null;
 
+  public string VideoURL;
+
   // Game Instance Singleton
   public static AppManager Instance
   {
